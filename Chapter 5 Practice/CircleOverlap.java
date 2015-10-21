@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class CircleOverlap
 {
    public static void main(String[] args)
@@ -14,13 +16,20 @@ public class CircleOverlap
       double ycenter2 = 0;
 
       // Your work goes here
-      if ( Math.abs(radius1 - radius2) > 0 && Math.abs(radius1 - radius2) < 20)
+      double totalradii = radius1 + radius2;
+      double diffradii = Math.abs(radius1 - radius2);
+     
+      if ( ((2*radius1) <= radius2) || ((2*radius2) <= radius1) )
       {
-          System.out.println("The circles are disjointed");
+          System.out.println("The circles are mutually contained");
       }
-      else if ()
+      else if ( totalradii < 40 )
       {
-          
+          System.out.println("The circles are disjoint");
+      }
+      else
+      {
+          System.out.println("The circles are overlapping");
       }
    }
 }
