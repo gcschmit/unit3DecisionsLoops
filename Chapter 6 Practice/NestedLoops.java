@@ -39,9 +39,7 @@
 //         }    
 //     }
 // }
-) 
-    
-{    
+ 
 public class NestedLoops
 {
     public static void printNum()
