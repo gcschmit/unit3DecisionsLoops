@@ -19,16 +19,18 @@ public class Substring
         System.out.print("Enter a word: "); 
         word = scan.next(); 
         
-        int s = 1;
-        for (int i = 0; 
+        for (int i=1;   
                 i < word.length(); 
-                i++)
-        {
-            System.out.println(word.substring(i, s));
-            s++;
+                ++i) 
+        { 
+            for (int s=0; 
+                    s+i <= word.length(); 
+                    ++s) 
+            { 
+                System.out.println( word.substring( s, s+i ) ); 
+            } 
         }
-        
-        
+
     }
 }
 
