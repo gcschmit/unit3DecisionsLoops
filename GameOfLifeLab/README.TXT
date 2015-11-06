@@ -30,6 +30,15 @@ The universe of the Game of Life is an infinite two-dimensional orthogonal
 	moment at which this happens is sometimes called a tick (in other words,
 	each generation is a pure function of the preceding one). The rules
 	continue to be applied repeatedly to create further generations.
+	
+Requirements Document:
+Grid Size: 15 by 15
+what do live cells look like?
+what do dead cells look like?
+what pattern is displayed? are multiple patterns available? are patterns chosen in code, chosen randomly, chosen by user
+how long does the game run? does it run forever? does it prompt the user to continue?
+what is the time interval between generations?
+what about edge cases? does it wrap around?
 
 
 Nonfunctional Requirements:
