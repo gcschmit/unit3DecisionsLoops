@@ -66,7 +66,7 @@ public class GameOfLife
         //  (alive cells contains actors; dead cells do not)
         Grid<Actor> grid = world.getGrid();
         
-        // create and add Bugs (a type of Actor) to the 8 intial locations
+        // create and add Bugs (a type of Actor) to the 8 initial locations
         Bug Bug1 = new Bug();
         Location loc1 = new Location(X1, Y1);
         grid.put(loc1, Bug1);
@@ -108,7 +108,7 @@ public class GameOfLife
      * @post    the world has been populated with a new grid containing the next generation
      * 
      */
-    private void createNextGeneration()
+    public void createNextGeneration()
     {
         /** You will need to read the documentation for the World, Grid, and Location classes
          *      in order to implement the Game of Life algorithm and leverage the GridWorld framework.
@@ -118,6 +118,19 @@ public class GameOfLife
         Grid<Actor> grid = world.getGrid();
         
         // insert magic here...
+        int alive_neighbors = 0;
+        for(int rows = 0;
+                rows < 9;
+                rows++)
+        {
+            for (int columns = 0;
+                    columns < 9;
+                    columns++)
+            {
+                ArrayList <Location> neighbors = getOccupiedAdjacentLocations(rows, columns); 
+                
+            }
+        }
         
     }
     
