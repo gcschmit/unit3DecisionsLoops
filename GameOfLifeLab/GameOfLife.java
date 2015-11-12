@@ -120,14 +120,14 @@ public class GameOfLife
         // insert magic here...
         int alive_neighbors = 0;
         for(int rows = 0;
-                rows < 9;
+                rows <= 9;
                 rows++)
         {
             for (int columns = 0;
-                    columns < 9;
+                    columns <= 9;
                     columns++)
             {
-                ArrayList <Location> neighbors = getOccupiedAdjacentLocations(rows, columns); 
+                //ArrayList <Location> neighbors = getOccupiedAdjacentLocations(rows, columns); 
                 
             }
         }
