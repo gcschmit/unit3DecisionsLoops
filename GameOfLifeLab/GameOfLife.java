@@ -4,7 +4,6 @@ import info.gridworld.actor.Bug;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
-
 import java.util.ArrayList;
 
 /**
@@ -123,6 +122,7 @@ public class GameOfLife
         
         ArrayList<Location> live = new ArrayList();
         ArrayList<Location> die = new ArrayList();
+        
         for(int row = 0;
                 row <= 9;
                 row++)
@@ -135,16 +135,12 @@ public class GameOfLife
                 ArrayList<Location> neighbors = grid.getOccupiedAdjacentLocations(newloc); 
                 int alive_neighbors = neighbors.size();
                 
-                boolean main_cell = grid.isValid(newloc);
-                if (main_cell == true)
+                Actor main_cell = grid.get(newloc);
+                if (main_cell != null)
                 {
                     if (alive_neighbors != 2)
                     {
                         die.add(newloc);
-                    }
-                    else
-                    {
-                        live.add(newloc);
                     }
                 }
                 else
@@ -153,14 +149,21 @@ public class GameOfLife
                     {
                         live.add(newloc);
                     }
-                    else
-                    {
-                        die.add(newloc);
-                    }
                 }
             }
         }
         
+        for (Location newloc:die)
+        {
+            grid.remove(newloc);
+        }
+        
+        for (Location newloc:live)
+        {
+            Bug newbug = new Bug();
+            grid.put(newloc, newbug);
+        }
+        world.show();
     }
     
     /**
@@ -198,13 +201,22 @@ public class GameOfLife
         return COLS;
     }
     
+    
     /**
      * Creates an instance of this class. Provides convenient execution.
      *
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         GameOfLife game = new GameOfLife();
+        
+        for (int i = 0; 
+                i < 2; 
+                i++)
+        {
+            Thread.sleep(3000);
+            game.createNextGeneration();
+        }
     }
-    
+
 }
