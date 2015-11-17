@@ -121,7 +121,8 @@ public class GameOfLife
         
         // insert magic here...
         
-        //phase 1: all bugs count their neighbors and record the results
+        ArrayList<Location> live = new ArrayList();
+        ArrayList<Location> die = new ArrayList();
         for(int row = 0;
                 row <= 9;
                 row++)
@@ -139,15 +140,22 @@ public class GameOfLife
                 {
                     if (alive_neighbors != 2)
                     {
-                        grid.remove(newloc);
+                        die.add(newloc);
+                    }
+                    else
+                    {
+                        live.add(newloc);
                     }
                 }
                 else
                 {
                     if (alive_neighbors == 3)
                     {
-                        Bug newbug = new Bug();
-                        grid.put(newloc, newbug);
+                        live.add(newloc);
+                    }
+                    else
+                    {
+                        die.add(newloc);
                     }
                 }
             }
