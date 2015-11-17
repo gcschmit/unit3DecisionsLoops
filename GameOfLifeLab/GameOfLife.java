@@ -4,6 +4,7 @@ import info.gridworld.actor.Bug;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
+
 import java.util.ArrayList;
 
 /**
@@ -120,19 +121,35 @@ public class GameOfLife
         
         // insert magic here...
         
-        
-        for(int rows = 0;
-                rows <= 9;
-                rows++)
+        //phase 1: all bugs count their neighbors and record the results
+        for(int row = 0;
+                row <= 9;
+                row++)
         {
-            for (int columns = 0;
-                    columns <= 9;
-                    columns++)
+            for (int col = 0;
+                    col <= 9;
+                    col++)
             {
-                ArrayList <Location> neighbors = getOccupiedAdjacentLocations(rows, columns); 
+                Location newloc = new Location(row, col);
+                ArrayList<Location> neighbors = grid.getOccupiedAdjacentLocations(newloc); 
                 int alive_neighbors = neighbors.size();
                 
-                
+                boolean main_cell = grid.isValid(newloc);
+                if (main_cell == true)
+                {
+                    if (alive_neighbors != 2)
+                    {
+                        grid.remove(newloc);
+                    }
+                }
+                else
+                {
+                    if (alive_neighbors == 3)
+                    {
+                        Bug newbug = new Bug();
+                        grid.put(newloc, newbug);
+                    }
+                }
             }
         }
         
@@ -173,7 +190,6 @@ public class GameOfLife
         return COLS;
     }
     
-    
     /**
      * Creates an instance of this class. Provides convenient execution.
      *
@@ -182,5 +198,5 @@ public class GameOfLife
     {
         GameOfLife game = new GameOfLife();
     }
-
+    
 }
