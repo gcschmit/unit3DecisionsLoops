@@ -120,8 +120,8 @@ public class GameOfLife
         
         // insert magic here...
         
-        ArrayList<Location> live = new ArrayList();
-        ArrayList<Location> die = new ArrayList();
+        ArrayList<Location> live = new ArrayList(); //list of cells that will live (if originally dead)
+        ArrayList<Location> die = new ArrayList();  //list of cells that will die (if originally alive)
         
         for(int row = 0;
                 row <= 9;
@@ -201,9 +201,9 @@ public class GameOfLife
         return COLS;
     }
     
-    
     /**
      * Creates an instance of this class. Provides convenient execution.
+     * Also creates the next two generations (with a 3 second pause between each generation)
      *
      */
     public static void main(String[] args) throws InterruptedException
